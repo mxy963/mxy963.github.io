@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TravelX Tourism</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/8a4b9e0b5f.js" crossorigin="anonymous"></script>
+  <style>
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+      font-family: "Poppins", sans-serif; 
+    }
+    
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+      transition: all 0.3s ease;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3), transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.3), transparent 50%);
+      animation: gradientShift 15s ease infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.1); }
+    }
+    
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 
+                  inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      position: relative;
+      z-index: 1;
+      animation: containerFloat 6s ease-in-out infinite;
+    }
+    
+    @keyframes containerFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+    
+    .logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      animation: logoGlow 3s ease-in-out infinite;
+    }
+    
+    .logo:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 12px 30px rgba(255, 255, 255, 0.4);
+    }
+    
+    @keyframes logoGlow {
+      0%, 100% { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
+      50% { box-shadow: 0 8px 30px rgba(255, 255, 255, 0.5); }
+    }
+    
+    .lang-switch {
+      background: rgba(255, 255, 255, 0.25);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 30px;
+      padding: 12px 20px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      font-size: 0.95rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .lang-switch:hover { 
+      background: rgba(255, 255, 255, 0.4); 
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .lang-switch:active {
+      transform: scale(0.98);
+    }
+
+    h1 { 
+      font-size: 2rem; 
+      margin-bottom: 10px; 
+      font-weight: 700; 
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    p { 
+      font-size: 1.05rem; 
+      margin-bottom: 30px; 
+      opacity: 0.95;
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .links { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 14px; 
+    }
+
+    .link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: white;
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 50px;
+      padding: 16px 24px;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      font-size: 1rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .link::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    .link:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .link i {
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+      z-index: 1;
+    }
+    
+    .link.whatsapp i {
+      color: #25D366;
+    }
+    
+    .link.instagram i {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .link.snapchat i {
+      color: #FFFC00;
+      filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+    }
+    
+    .link.phone i {
+      color: #4CAF50;
+    }
+    
+    .link.whatsapp:hover i,
+    .link.phone:hover i {
+      color: white;
+    }
+    
+    .link.instagram:hover i {
+      background: white;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .link.snapchat:hover i {
+      color: #000;
+      filter: none;
+    }
+    
+    .link:hover i {
+      transform: scale(1.2) rotate(10deg);
+    }
+    
+    .link:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .link span {
+      z-index: 1;
+    }
+
+    .link.whatsapp:hover { 
+      background: linear-gradient(135deg, #25D366, #128C7E); 
+      color: white; 
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+    }
+    
+    .link.instagram:hover { 
+      background: linear-gradient(135deg, #833AB4, #E1306C, #FD1D1D, #FCAF45); 
+      color: white; 
+      box-shadow: 0 10px 30px rgba(225, 48, 108, 0.4);
+    }
+    
+    .link.snapchat:hover { 
+      background: linear-gradient(135deg, #FFFC00, #FFF700); 
+      color: #000; 
+      box-shadow: 0 10px 30px rgba(255, 252, 0, 0.4);
+    }
+    
+    .link.phone:hover { 
+      background: linear-gradient(135deg, #4CAF50, #45a049); 
+      color: white; 
+      box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
+    }
+
+    .campaigns {
+      margin-top: 30px;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .campaigns:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .campaigns h2 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      text-align: center;
+      font-weight: 700;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .campaigns ul {
+      list-style: none;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+    
+    .campaigns ul li {
+      padding: 8px 0;
+      transition: all 0.3s ease;
+      border-radius: 10px;
+      padding-left: 10px;
+    }
+    
+    .campaigns ul li:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(5px);
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.85rem;
+      opacity: 0.8;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 30px 20px;
+      }
+      
+      h1 {
+        font-size: 1.6rem;
+      }
+      
+      .logo {
+        width: 80px;
+        height: 80px;
+      }
+      
+      .link {
+        padding: 14px 20px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=200&q=60" alt="Logo" class="logo" />
+      <button class="lang-switch" onclick="changeLang()">
+        🌐 <span id="langLabel">TR</span>
+      </button>
+    </div>
+
+    <h1 id="title">ترافل إكس للسياحة</h1>
+    <p id="subtitle">اكتشف العالم معنا 🌍</p>
+
+    <div class="links">
+      <a href="https://wa.me/905555555555" class="link whatsapp">
+        <i class="fab fa-whatsapp"></i> 
+        <span id="whatsappText">واتساب</span>
+      </a>
+      <a href="https://instagram.com/yourpage" class="link instagram">
+        <i class="fab fa-instagram"></i> 
+        <span id="instagramText">إنستغرام</span>
+      </a>
+      <a href="https://www.snapchat.com/add/yourname" class="link snapchat">
+        <i class="fab fa-snapchat-ghost"></i> 
+        <span id="snapchatText">سناب شات</span>
+      </a>
+      <a href="tel:+905555555555" class="link phone">
+        <i class="fas fa-phone"></i> 
+        <span id="phoneText">اتصل بنا</span>
+      </a>
+    </div>
+
+    <div class="campaigns">
+      <h2 id="campaignTitle">عروضنا</h2>
+      <ul id="campaignList">
+        <li>🗺️ جولات خاصة في تركيا</li>
+        <li>🚗 سيارات فاخرة مع سائق يتكلم العربية</li>
+        <li>✈️ حجوزات من والى المطار</li>
+      </ul>
+    </div>
+
+    <footer>© 2025 TravelX Tourism</footer>
+  </div>
+
+  <script>
+    const translations = {
+      tr: {
+        title: "TravelX Turizm",
+        subtitle: "Dünyayı bizimle keşfedin 🌍",
+        whatsapp: "WhatsApp",
+        instagram: "Instagram",
+        snapchat: "Snapchat",
+        phone: "Telefonla Ara",
+        campaignTitle: "Kampanyalarımız",
+        campaigns: [
+          "✈️ İstanbul - Dubai özel turu %30 indirimli!",
+          "🏖️ Antalya tatil paketlerinde ekstra gece hediye!",
+          "🚗 Araç kiralamada %20 indirim.",
+        ],
+      },
+      en: {
+        title: "TravelX Tourism",
+        subtitle: "Discover the world with us 🌍",
+        whatsapp: "WhatsApp",
+        instagram: "Instagram",
+        snapchat: "Snapchat",
+        phone: "Call Us",
+        campaignTitle: "Our Campaigns",
+        campaigns: [
+          "✈️ Istanbul - Dubai special tour 30% off!",
+          "🏖️ Extra night gift in Antalya holiday packages!",
+          "🚗 20% discount on car rentals.",
+        ],
+      },
+      ar: {
+        title: "ترافل إكس للسياحة",
+        subtitle: "اكتشف العالم معنا 🌍",
+        whatsapp: "واتساب",
+        instagram: "إنستغرام",
+        snapchat: "سناب شات",
+        phone: "اتصل بنا",
+        campaignTitle: "عروضنا",
+        campaigns: [
+          "🗺️ جولات خاصة في تركيا",
+          "🚗 سيارات فاخرة مع سائق يتكلم العربية",
+          "✈️ حجوزات من والى المطار",
+        ],
+      },
+    };
+
+    let currentLang = "ar";
+    
+    function changeLang() {
+      currentLang = currentLang === "ar" ? "tr" : currentLang === "tr" ? "en" : "ar";
+      const t = translations[currentLang];
+      
+      document.getElementById("langLabel").innerText = currentLang.toUpperCase();
+      document.getElementById("title").innerText = t.title;
+      document.getElementById("subtitle").innerText = t.subtitle;
+      document.getElementById("whatsappText").innerText = t.whatsapp;
+      document.getElementById("instagramText").innerText = t.instagram;
+      document.getElementById("snapchatText").innerText = t.snapchat;
+      document.getElementById("phoneText").innerText = t.phone;
+      document.getElementById("campaignTitle").innerText = t.campaignTitle;
+
+      const list = document.getElementById("campaignList");
+      list.innerHTML = "";
+      t.campaigns.forEach(c => {
+        const li = document.createElement("li");
+        li.textContent = c;
+        list.appendChild(li);
+      });
+
+      document.body.dir = currentLang === "ar" ? "rtl" : "ltr";
+    }
+    
+    // Sayfa yüklendiğinde Arapça olarak başlat
+    window.addEventListener('DOMContentLoaded', function() {
+      changeLang();
+      changeLang();
+      changeLang();
+    });
+  </script>
+</body>
+</html>
