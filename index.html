@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TravelX Tourism</title>
+  <title>Güzel Travel</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/8a4b9e0b5f.js" crossorigin="anonymous"></script>
   <style>
@@ -193,9 +193,13 @@
       background-clip: text;
     }
     
-    .link.snapchat i {
-      color: #FFFC00;
-      filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+    .link.tiktok i {
+      color: #000;
+      filter: drop-shadow(0 0 2px rgba(0, 255, 255, 0.5));
+    }
+    
+    .link.facebook i {
+      color: #1877F2;
     }
     
     .link.phone i {
@@ -203,7 +207,8 @@
     }
     
     .link.whatsapp:hover i,
-    .link.phone:hover i {
+    .link.phone:hover i,
+    .link.facebook:hover i {
       color: white;
     }
     
@@ -214,8 +219,8 @@
       background-clip: text;
     }
     
-    .link.snapchat:hover i {
-      color: #000;
+    .link.tiktok:hover i {
+      color: white;
       filter: none;
     }
     
@@ -244,10 +249,16 @@
       box-shadow: 0 10px 30px rgba(225, 48, 108, 0.4);
     }
     
-    .link.snapchat:hover { 
-      background: linear-gradient(135deg, #FFFC00, #FFF700); 
-      color: #000; 
-      box-shadow: 0 10px 30px rgba(255, 252, 0, 0.4);
+    .link.tiktok:hover { 
+      background: linear-gradient(135deg, #000, #00f2ea, #ff0050); 
+      color: white; 
+      box-shadow: 0 10px 30px rgba(0, 242, 234, 0.4);
+    }
+    
+    .link.facebook:hover { 
+      background: linear-gradient(135deg, #1877F2, #0e5fc7); 
+      color: white; 
+      box-shadow: 0 10px 30px rgba(24, 119, 242, 0.4);
     }
     
     .link.phone:hover { 
@@ -336,30 +347,34 @@
       </button>
     </div>
 
-    <h1 id="title">ترافل إكس للسياحة</h1>
+    <h1 id="title">جوزيل ترافيل</h1>
     <p id="subtitle">اكتشف العالم معنا 🌍</p>
 
     <div class="links">
-      <a href="https://wa.me/905555555555" class="link whatsapp">
+      <a href="https://api.whatsapp.com/send?phone=905315045722" class="link whatsapp">
         <i class="fab fa-whatsapp"></i> 
         <span id="whatsappText">واتساب</span>
       </a>
-      <a href="https://instagram.com/yourpage" class="link instagram">
+      <a href="https://instagram.com/Guzel__travel" class="link instagram">
         <i class="fab fa-instagram"></i> 
         <span id="instagramText">إنستغرام</span>
       </a>
-      <a href="https://www.snapchat.com/add/yourname" class="link snapchat">
-        <i class="fab fa-snapchat-ghost"></i> 
-        <span id="snapchatText">سناب شات</span>
+      <a href="https://tiktok.com/@guzeltravel_" class="link tiktok">
+        <i class="fab fa-tiktok"></i> 
+        <span id="tiktokText">تيك توك</span>
       </a>
-      <a href="tel:+905555555555" class="link phone">
+      <a href="https://www.facebook.com/share/19qMHmU2Tm/?mibextid=wwXIfr" class="link facebook">
+        <i class="fab fa-facebook"></i> 
+        <span id="facebookText">فيسبوك</span>
+      </a>
+      <a href="tel:+905315045722" class="link phone">
         <i class="fas fa-phone"></i> 
         <span id="phoneText">اتصل بنا</span>
       </a>
     </div>
 
     <div class="campaigns">
-      <h2 id="campaignTitle">عروضنا</h2>
+      <h2 id="campaignTitle">خدماتنا</h2>
       <ul id="campaignList">
         <li>🗺️ جولات خاصة في تركيا</li>
         <li>🚗 سيارات فاخرة مع سائق يتكلم العربية</li>
@@ -367,47 +382,50 @@
       </ul>
     </div>
 
-    <footer>© 2025 TravelX Tourism</footer>
+    <footer>© 2025 Güzel Travel</footer>
   </div>
 
   <script>
     const translations = {
       tr: {
-        title: "TravelX Turizm",
+        title: "Güzel Travel",
         subtitle: "Dünyayı bizimle keşfedin 🌍",
         whatsapp: "WhatsApp",
         instagram: "Instagram",
-        snapchat: "Snapchat",
+        tiktok: "TikTok",
+        facebook: "Facebook",
         phone: "Telefonla Ara",
-        campaignTitle: "Kampanyalarımız",
+        campaignTitle: "Hizmetlerimiz",
         campaigns: [
-          "✈️ İstanbul - Dubai özel turu %30 indirimli!",
-          "🏖️ Antalya tatil paketlerinde ekstra gece hediye!",
-          "🚗 Araç kiralamada %20 indirim.",
+          "🗺️ Türkiye'de özel turlar",
+          "🚗 Arapça konuşan şoförlü lüks arabalar",
+          "✈️ Havaalanından gidiş-dönüş rezervasyonları",
         ],
       },
       en: {
-        title: "TravelX Tourism",
+        title: "Güzel Travel",
         subtitle: "Discover the world with us 🌍",
         whatsapp: "WhatsApp",
         instagram: "Instagram",
-        snapchat: "Snapchat",
+        tiktok: "TikTok",
+        facebook: "Facebook",
         phone: "Call Us",
-        campaignTitle: "Our Campaigns",
+        campaignTitle: "Our Services",
         campaigns: [
-          "✈️ Istanbul - Dubai special tour 30% off!",
-          "🏖️ Extra night gift in Antalya holiday packages!",
-          "🚗 20% discount on car rentals.",
+          "🗺️ Private tours in Turkey",
+          "🚗 Luxury cars with Arabic speaking driver",
+          "✈️ Airport pick-up and drop-off reservations",
         ],
       },
       ar: {
-        title: "ترافل إكس للسياحة",
+        title: "جوزيل ترافيل",
         subtitle: "اكتشف العالم معنا 🌍",
         whatsapp: "واتساب",
         instagram: "إنستغرام",
-        snapchat: "سناب شات",
+        tiktok: "تيك توك",
+        facebook: "فيسبوك",
         phone: "اتصل بنا",
-        campaignTitle: "عروضنا",
+        campaignTitle: "خدماتنا",
         campaigns: [
           "🗺️ جولات خاصة في تركيا",
           "🚗 سيارات فاخرة مع سائق يتكلم العربية",
@@ -427,7 +445,8 @@
       document.getElementById("subtitle").innerText = t.subtitle;
       document.getElementById("whatsappText").innerText = t.whatsapp;
       document.getElementById("instagramText").innerText = t.instagram;
-      document.getElementById("snapchatText").innerText = t.snapchat;
+      document.getElementById("tiktokText").innerText = t.tiktok;
+      document.getElementById("facebookText").innerText = t.facebook;
       document.getElementById("phoneText").innerText = t.phone;
       document.getElementById("campaignTitle").innerText = t.campaignTitle;
 
