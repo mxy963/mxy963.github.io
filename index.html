@@ -269,7 +269,7 @@
 
     .campaigns {
       margin-top: 30px;
-      text-align: left;
+      text-align: center;
       background: rgba(255, 255, 255, 0.15);
       border-radius: 20px;
       padding: 25px;
@@ -285,29 +285,45 @@
     }
     
     .campaigns h2 {
-      font-size: 1.3rem;
-      margin-bottom: 15px;
+      font-size: 1.5rem;
+      margin-bottom: 25px;
       text-align: center;
       font-weight: 700;
       text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
     
-    .campaigns ul {
-      list-style: none;
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
-    
-    .campaigns ul li {
-      padding: 8px 0;
-      transition: all 0.3s ease;
-      border-radius: 10px;
-      padding-left: 10px;
-    }
-    
-    .campaigns ul li:hover {
+    .service-item {
+      margin-bottom: 25px;
       background: rgba(255, 255, 255, 0.1);
-      transform: translateX(5px);
+      border-radius: 15px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .service-item:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.02);
+    }
+    
+    .service-item img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .service-item img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .service-item p {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.6;
     }
 
     footer {
@@ -343,7 +359,7 @@
     <div class="header">
       <img src="./cemil.png" alt="Logo" class="logo" />
       <button class="lang-switch" onclick="changeLang()">
-        🌐 <span id="langLabel">TR</span>
+        🌍 <span id="langLabel">TR</span>
       </button>
     </div>
 
@@ -375,11 +391,14 @@
 
     <div class="campaigns">
       <h2 id="campaignTitle">خدماتنا</h2>
-      <ul id="campaignList">
-        <li>🗺️ جولات خاصة في تركيا</li>
-        <li>🚗 سيارات فاخرة مع سائق يتكلم العربية</li>
-        <li>✈️ حجوزات من والى المطار</li>
-      </ul>
+      <div class="service-item">
+        <img src="./hotel.png" alt="VIP Hotel">
+        <p id="hotelText">فنادق VIP مع غرف فاخرة</p>
+      </div>
+      <div class="service-item">
+        <img src="./car.png" alt="Luxury Car">
+        <p id="carText">سيارات فاخرة مع سائق محترف يتحدث العربية</p>
+      </div>
     </div>
 
     <footer>© 2025 Güzel Travel</footer>
@@ -396,11 +415,8 @@
         facebook: "Facebook",
         phone: "Telefonla Ara",
         campaignTitle: "Hizmetlerimiz",
-        campaigns: [
-          "🗺️ Türkiye'de özel turlar",
-          "🚗 Arapça konuşan şoförlü lüks arabalar",
-          "✈️ Havaalanından gidiş-dönüş rezervasyonları",
-        ],
+        hotelText: "VIP oteller ve lüks odalar",
+        carText: "Arapça konuşan profesyonel şoförlü lüks arabalar"
       },
       en: {
         title: "Güzel Travel",
@@ -411,11 +427,8 @@
         facebook: "Facebook",
         phone: "Call Us",
         campaignTitle: "Our Services",
-        campaigns: [
-          "🗺️ Private tours in Turkey",
-          "🚗 Luxury cars with Arabic speaking driver",
-          "✈️ Airport pick-up and drop-off reservations",
-        ],
+        hotelText: "VIP hotels with luxury rooms",
+        carText: "Luxury cars with professional Arabic speaking driver"
       },
       ar: {
         title: "Güzel Travel",
@@ -426,11 +439,8 @@
         facebook: "فيسبوك",
         phone: "اتصل بنا",
         campaignTitle: "خدماتنا",
-        campaigns: [
-          "🗺️ جولات خاصة في تركيا",
-          "🚗 سيارات فاخرة مع سائق يتكلم العربية",
-          "✈️ حجوزات من والى المطار",
-        ],
+        hotelText: "فنادق VIP مع غرف فاخرة",
+        carText: "سيارات فاخرة مع سائق محترف يتحدث العربية"
       },
     };
 
@@ -449,14 +459,8 @@
       document.getElementById("facebookText").innerText = t.facebook;
       document.getElementById("phoneText").innerText = t.phone;
       document.getElementById("campaignTitle").innerText = t.campaignTitle;
-
-      const list = document.getElementById("campaignList");
-      list.innerHTML = "";
-      t.campaigns.forEach(c => {
-        const li = document.createElement("li");
-        li.textContent = c;
-        list.appendChild(li);
-      });
+      document.getElementById("hotelText").innerText = t.hotelText;
+      document.getElementById("carText").innerText = t.carText;
 
       document.body.dir = currentLang === "ar" ? "rtl" : "ltr";
     }
